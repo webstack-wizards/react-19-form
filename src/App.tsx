@@ -1,5 +1,11 @@
+import OldForm from './OldForm';
+
 function App() {
-  return <h1>Vite + React</h1>;
+  return (
+    <main>
+      <OldForm />
+    </main>
+  );
 }
 
 export default App;

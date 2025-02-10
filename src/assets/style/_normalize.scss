@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+article,
+aside,
+details,
+main,
+figcaption,
+figure,
+hgroup,
+menu,
+nav,
+header,
+footer,
+section {
+  display: block;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  // min-height: 100vh;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
