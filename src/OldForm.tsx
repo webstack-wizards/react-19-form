@@ -6,28 +6,35 @@ type HandleInput = (value: React.ChangeEvent<HTMLInputElement>) => void;
 interface InputBox {
   title?: string;
   type: string;
-  value?: string;
+  value: string;
   onChange: HandleInput;
   required?: boolean;
 }
 
+type BaseProps = Pick<InputBox, 'value' | 'onChange' | 'required' | 'type'> & {
+  placeholder: string;
+  minLength?: number;
+};
+
 const InputBox = ({ title, type, value, onChange, required = false }: InputBox) => {
-  switch (type) {
-    case 'password':
-      return (
-        <label className="inputBox">
-          {title && <span className={'inputBox__title' + (value ? ' active' : '')}>{title}</span>}
-          <input type={type} value={value} onChange={onChange} minLength={8} required={required} />
-        </label>
-      );
-    default:
-      return (
-        <label className="inputBox">
-          {title && <span className={'inputBox__title' + (value ? ' active' : '')}>{title}</span>}
-          <input type={type} value={value} onChange={onChange} required={required} />
-        </label>
-      );
+  const baseProps: BaseProps = {
+    type,
+    value,
+    onChange,
+    required,
+    placeholder: ' ',
+  };
+
+  if (type === 'password') {
+    baseProps.minLength = 8;
   }
+
+  return (
+    <label className="inputBox">
+      <input {...baseProps} />
+      {title && <span className="inputBox__title">{title}</span>}
+    </label>
+  );
 };
 
 const OldForm = () => {

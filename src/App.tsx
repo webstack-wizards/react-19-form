@@ -1,11 +1,11 @@
 import NewForm from './NewForm';
-// import OldForm from './OldForm';
+import OldForm from './OldForm';
 
 function App() {
   return (
     <main>
-      {/* <OldForm /> */}
-      <NewForm />
+      <OldForm />
+      {/* <NewForm /> */}
     </main>
   );
 }
