@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('./background.jpg') center/cover no-repeat;
+  background: url('/assets/background.jpg') center/cover no-repeat;
 }
 .form {
   width: calc(100% - 30px);
@@ -40,7 +40,7 @@
 .inputBox {
   display: block;
   height: 54px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   position: relative;
 
   &__title {
@@ -49,11 +49,6 @@
     transform: translateY(-50%);
     left: 15px;
     transition: all 0.12s ease-in-out;
-
-    &.active {
-      transform: translateY(-100%);
-      top: 0;
-    }
   }
   &:last-child {
     margin-bottom: 0;
@@ -71,8 +66,18 @@
     &:focus {
       border-color: rgba(255, 255, 255, 0.8);
     }
-    &:not(:focus):not(:valid) {
+    &:not(:focus):not(:placeholder-shown):not(:valid) {
       border-color: rgba(255, 0, 0, 0.611);
+    }
+    &::placeholder {
+      color: red;
+    }
+    &:not(:placeholder-shown),
+    &:focus {
+      ~ .inputBox__title {
+        transform: translateY(-100%);
+        top: 0;
+      }
     }
   }
 }
