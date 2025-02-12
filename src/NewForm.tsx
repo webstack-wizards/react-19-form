@@ -9,23 +9,29 @@ interface InputBox {
   required?: boolean;
 }
 
+type BaseProps = Pick<InputBox, 'name' | 'type' | 'required'> & {
+  placeholder: string;
+  minLength?: number;
+};
+
 const InputBox = ({ title, type, required = false, name }: InputBox) => {
-  switch (type) {
-    case 'password':
-      return (
-        <label className="inputBox">
-          <input name={name} type={type} minLength={8} required={required} placeholder=" " />
-          {title && <span className={'inputBox__title'}>{title}</span>}
-        </label>
-      );
-    default:
-      return (
-        <label className="inputBox">
-          <input name={name} type={type} required={required} placeholder=" " />
-          {title && <span className={'inputBox__title'}>{title}</span>}
-        </label>
-      );
+  const baseProps: BaseProps = {
+    type,
+    required,
+    name,
+    placeholder: ' ',
+  };
+
+  if (type === 'password') {
+    baseProps.minLength = 8;
   }
+
+  return (
+    <label className="inputBox">
+      <input {...baseProps} />
+      {title && <span className={'inputBox__title'}>{title}</span>}
+    </label>
+  );
 };
 
 const ButtonSubmit = () => {
